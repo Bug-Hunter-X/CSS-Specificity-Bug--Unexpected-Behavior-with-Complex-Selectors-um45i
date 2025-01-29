@@ -1,0 +1,22 @@
+The solution involves being more explicit in our CSS selectors to remove any ambiguity. We ensure that the highest specificity selector takes precedence:
+
+```css
+div {
+  color: blue;
+}
+
+.myClass div {
+  color: red;
+}
+
+#myID div {
+  color: green;
+}
+
+/*  Solution: add more specific rule*/
+#myID .myClass div {
+  color: purple;
+}
+```
+
+This revised CSS ensures that the `purple` color is applied consistently across browsers, resolving the unexpected rendering behavior.
