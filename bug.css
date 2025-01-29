@@ -1,0 +1,27 @@
+The following CSS code snippet demonstrates an uncommon error related to the specificity of CSS selectors:
+
+```css
+div {
+  color: blue;
+}
+
+.myClass div {
+  color: red;
+}
+
+#myID div {
+  color: green;
+}
+
+#myID .myClass div {
+  color: purple; 
+}
+
+<div id="myID" class="myClass">
+  <div>This text should be purple.</div>
+</div> 
+```
+
+The expected output is that the text within the inner `div` should be purple, because the selector `#myID .myClass div` has the highest specificity and overrides the previous declarations. However, some browsers might not handle this case correctly due to nuances in how they parse and apply CSS rules with multiple classes and IDs in cascade. This might lead to unexpected results, such as the text remaining red or green, despite the `purple` rule being present.
+
+This error is uncommon because it is related to the behavior of CSS specificity under complex selector combinations in various browser engines which aren't always perfectly consistent.
